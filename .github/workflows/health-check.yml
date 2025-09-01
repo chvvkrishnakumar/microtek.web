@@ -1,0 +1,13 @@
+name: Health Check
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"  # every 15 minutes
+  workflow_dispatch:        # allows manual run from GitHub UI
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hit Render API Health
+        run: curl -s https://micro-tech-2-ludk.onrender.com/api/health
